@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import trainApi from '@/services/api/trainsApi'
 import { TrainState } from '@/stores/trainState'
+import { Train } from '@/models/train'
 
 export const trainStore = defineStore('train', {
    state: () => ({
@@ -14,5 +15,8 @@ export const trainStore = defineStore('train', {
             this.trains = data
          }
       },
+      updateTrainSpeedLimits (train: Train): void {
+         trainApi.postTrainSpeedLimits(train)
+       },
    }
 }) 
